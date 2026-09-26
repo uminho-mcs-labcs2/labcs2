@@ -8,7 +8,7 @@ pela qual necessitamos de um *setup* inicial que deve ser assegurado **antes da 
 
 Cada aluno deve dispor de um *login* na plataforma [CyLab Security Academy](https://cylabacademy.org). Admitindo que não o têm ainda, devem seguir o processo de **SignUp** acessíveis na página de entrada (se já dispuserem de *login*, podem usar esse nas sessões de LabCS2).
 
-Uma vês cumprido esse passo, devem preencher a *form* disponibilizada [aqui](https://docs.google.com/forms/d/e/1FAIpQLScp53RZc2e79SULnffPP2vVL9mEeiNj784kJQT_dOIeo65yKg).
+Uma vês cumprido esse passo, devem preencher a *form* disponibilizada [aqui](https://forms.gle/83fHETU7sWzVsBDg6).
 
 ## Software de suporte
 
