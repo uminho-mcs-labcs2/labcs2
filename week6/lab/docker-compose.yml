@@ -1,0 +1,46 @@
+# PHP2Shell lab — week 6.
+#
+#   vuln    -> http://localhost:8080  (affected PHP, e.g. 8.3.35)
+#   patched -> http://localhost:8081  (fixed PHP, 8.3.36)
+#   waf     -> http://localhost:8088  (virtual-patching proxy in front of 'vuln')  [E2]
+#
+# Usage:  docker compose up -d --build --wait
+#         docker compose --profile waf up -d --build --wait   # includes the WAF proxy
+# Ports are local-only. Direct access to 8080 deliberately bypasses the proxy for
+# comparison in E2; a deployment relying on a WAF must restrict backend access.
+
+services:
+  vuln:
+    build:
+      context: .
+      args:
+        PHP_TAG: "8.3.35-apache"   # <-- AFFECTED version (adjust if unavailable)
+    ports:
+      - "127.0.0.1:8080:80"
+
+  patched:
+    build:
+      context: .
+      args:
+        PHP_TAG: "8.3.36-apache"   # <-- FIXED version
+    ports:
+      - "127.0.0.1:8081:80"
+
+  # "Virtual patching" proxy — only starts with the 'waf' profile (see E2).
+  waf:
+    image: nginx:1.27-alpine
+    profiles: ["waf"]
+    depends_on:
+      vuln:
+        condition: service_healthy
+    volumes:
+      # Mount the directory so editor save/replace operations are visible in nginx.
+      - ./waf:/etc/nginx/conf.d:ro
+    ports:
+      - "127.0.0.1:8088:80"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1/version.php"]
+      interval: 2s
+      timeout: 3s
+      start_period: 5s
+      retries: 15
