@@ -80,6 +80,20 @@ Stop with `docker compose down`. Re-run `./setup.sh` any time to roll fresh flag
 > `./setup.sh` must run **before** `docker compose up`: it creates the `flag.txt` files
 > that the containers mount. If you skip it, the flag mounts won't exist.
 
+### Troubleshooting: `\r` / "No such file" errors from `setup.sh` or `check.sh`
+
+If the scripts fail with messages like `set: pipefail: invalid option name`,
+`$'\r': command not found`, or `challenges/.../flag.txt: No such file or directory`
+(common on macOS, or on any machine if the repo was cloned on Windows), the scripts were
+checked out with Windows (CRLF) line endings. This is **not** a missing-file problem; the
+directories are all present. The cleanest fix is to re-clone the repo. To repair an
+existing copy in place, strip the carriage returns (works on stock macOS - note BSD `sed`
+will not):
+
+```bash
+for f in setup.sh check.sh; do tr -d '\r' < "$f" > "$f.tmp" && mv "$f.tmp" "$f"; done
+```
+
 ## The challenges
 
 | id             | name        | track              | port / data                         | pts | difficulty       |
