@@ -1,0 +1,36 @@
+# week 7 CTF - all targets are intentionally vulnerable. Run LOCALLY only.
+#
+#   ./setup.sh            # FIRST: generate flags (creates challenges/*/flag.txt)
+#   docker compose up --build
+#
+#   w1-cmdi    http://localhost:9001     (web, command injection)
+#   w2-objinj  http://localhost:9002     (web, PHP object injection)
+#   p1-uaf     nc localhost 9100         (pwn, use-after-free)
+#   d1-forensics                         (no service - analyse challenges/d1-forensics/access.log)
+
+services:
+  w1-cmdi:
+    build: ./challenges/w1-cmdi
+    # Bind to loopback only: these targets are deliberately vulnerable and must never
+    # be reachable from the network.
+    ports:
+      - "127.0.0.1:9001:80"
+    volumes:
+      - ./challenges/w1-cmdi/flag.txt:/flag:ro
+    restart: "no"
+
+  w2-objinj:
+    build: ./challenges/w2-objinj
+    ports:
+      - "127.0.0.1:9002:80"
+    volumes:
+      - ./challenges/w2-objinj/flag.txt:/flag:ro
+    restart: "no"
+
+  p1-uaf:
+    build: ./challenges/p1-uaf
+    ports:
+      - "127.0.0.1:9100:9100"
+    volumes:
+      - ./challenges/p1-uaf/flag.txt:/flag:ro
+    restart: "no"

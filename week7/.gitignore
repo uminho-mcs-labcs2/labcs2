@@ -1,0 +1,10 @@
+# Never commit generated flags or the local verification hashes.
+flag.txt
+.flaghashes
+
+# Generated from access.log.tmpl by setup.sh (contains the encoded flag).
+challenges/d1-forensics/access.log
+
+# Locally built pwn binaries.
+challenges/p1-uaf/chall
+challenges/p1-uaf/chall_asan
