@@ -1,0 +1,30 @@
+# Normalize line endings across platforms.
+#
+# The lab scripts run under bash inside Linux containers. A CRLF checkout on
+# Windows (git's default core.autocrlf=true) breaks them: bash reports
+# "/bin/bash^M: bad interpreter" or "$'\r': command not found". Forcing LF on
+# every text file makes clones correct on every OS, so no one has to strip \r
+# by hand after cloning.
+
+# Let git auto-detect text vs binary, and always check out text with LF.
+* text=auto eol=lf
+
+# Critical executables / container inputs: always LF (belt and suspenders).
+*.sh        text eol=lf
+Dockerfile  text eol=lf
+*.php       text eol=lf
+*.c         text eol=lf
+*.h         text eol=lf
+*.md        text eol=lf
+*.yml       text eol=lf
+*.yaml      text eol=lf
+*.tmpl      text eol=lf
+
+# Binary artifacts: never apply line-ending conversion.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.pdf  binary
+*.zip  binary
+*.gz   binary
