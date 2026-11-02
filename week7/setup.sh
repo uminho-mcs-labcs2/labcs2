@@ -26,18 +26,18 @@ gen_flag() {
 sha256()   { printf '%s' "$1" | sha256sum | cut -d' ' -f1; }
 
 : > .flaghashes
-declare -A FLAG
+d1_flag=""   # only d1-forensics' flag is reused later (baked into its access log)
 
 for ch in "${CHALLENGES[@]}"; do
     f="$(gen_flag)"
-    FLAG[$ch]="$f"
+    if [ "$ch" = d1-forensics ]; then d1_flag="$f"; fi
     printf '%s' "$f" > "challenges/$ch/flag.txt"      # no trailing newline
     printf '%s %s\n' "$ch" "$(sha256 "$f")" >> .flaghashes
 done
 
 # d1-forensics is static log analysis: bake its flag (base64-encoded) into the log so
 # students recover it by decoding, rather than by reading a flag file.
-b64="$(printf '%s' "${FLAG[d1-forensics]}" | base64 | tr -d '\n')"
+b64="$(printf '%s' "$d1_flag" | base64 | tr -d '\n')"
 sed "s|__EXFIL__|${b64}|" \
     challenges/d1-forensics/access.log.tmpl > challenges/d1-forensics/access.log
 
