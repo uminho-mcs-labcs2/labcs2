@@ -2,7 +2,7 @@
 
 A semana 8 será dedicada a mais uma sessão CTF de treino com recurso à plataforma
 [CyLab Security Academy](https://cylabacademy.org). 
-Pressupõe-se que os passos mencionados em [week3-prep.md](../week3/week3-pred.md) já tenham sido realizados.
+Pressupõe-se que os passos mencionados em [week3-prep.md](../week3/week3-prep.md) já tenham sido realizados.
 
 Note que nesta sessão se pretende valorizar muito mais o "como se faz" do que propriamente o "o que se faz" -- __a obtenção de uma *flag* descontextualizada do processo conduzido que culmina na sua obtenção acabará por ser muito pouco valorizado__.
 
