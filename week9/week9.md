@@ -6,6 +6,11 @@ Pressupõe-se que os passos mencionados em [week3-prep.md](../week3/week3-prep.m
 
 Note que nesta sessão se pretende valorizar muito mais o "como se faz" do que propriamente o "o que se faz" -- __a obtenção de uma *flag* descontextualizada do processo conduzido que culmina na sua obtenção acabará por ser muito pouco valorizado__.
 
+### configuração da VPN
+
+Para aceder aos desafios, é necessário que a rede permita aceder a *ports* TCP não standards. A rede WIFI `eduroam` bloqueia esses *ports*, pelo que se torna necessário utilizar uma VPN. No entanto, a VPN recomendada (`eduVPN`) não está a permitir a utilização desses *ports* -- uma *workaround* possível é utilizar o cliente VPN da **cloudfare**: [cloudflare Warp](https://one.one.one.one).
+
+
 ## Plano
 
 - 14:00 - 14:20: *briefing*
