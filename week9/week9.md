@@ -16,7 +16,8 @@ Note que nesta sessão se pretende valorizar muito mais o "como se faz" do que p
 
 - Cada aluno faz uso da sua própria conta do **CyLab**. Contributos individuais são contabilizados no *team*.
 - Um vez realizado o *login* no **CyLab**, devem selecionar o menu **Classroom**, e a opção **Join with invite code**. O código da sessão é `C7LCYSogN`.
-- A cada desafio realizado, deve corresponder uma directoria do repositório GITHUB do *team*, com nome `week8/<Bloco><Num>` (e.g. `week8/A3`, para o 3º desafio do CTF). Nessa directoria devem incluir:
+- Existem dois grupos de desafios (`A` e `B`) -- a ideia é que cada elemento do *team* pode assumir a resolução de um grupo (obs: houve o cuidado de equilibrar a dificuldade entre os dois grupos). O terceiro grupo (`C - homework`) foi pensado para ser resolvido depois.
+- A cada desafio realizado, deve corresponder uma directoria do repositório GITHUB do *team*, com nome `week9/<Bloco><Num>` (e.g. `week9/A1`, para o 1º desafio do grupo A). Nessa directoria devem incluir:
   + Um ficheiro `README.md` contendo informação do autor(es) dessa resolução e notas (estratégia, tentativas falhadas, interacções com IA, lições aprendidas, etc.).
   + **Todo o código** desenvolvido de suporte à resolução
 - Devem fazer `commit` e `push` sempre que fecham um desafio (não esquecer de submeter a *flag* no **CyLab**!)
